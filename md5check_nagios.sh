@@ -2,7 +2,7 @@
 
 # just checks md5sum of file, to see if 
 # loadbalancing or some other thing is 
-# corrupting the file -- carlo
+# corrupting the file -- lo
 
 /usr/bin/wget http://somefile
 CHECK=$(/usr/bin/md5sum ./somefile |/bin/awk '{print $1}')

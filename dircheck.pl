@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-# emails any user and sysadmin for home dirs using > 100MB. - carlo
+# emails any user and sysadmin for home dirs using > 100MB. - lo
 
 use strict;
 my $host=`hostname`;
@@ -25,6 +25,6 @@ foreach my $line (@users)
 #    if ($usage > $thresh)
 #    {
 #		print "$user over $thresh";
-#        system "echo \"Hi $user.  Please free space on your home directory on $host.  Our limit is $thresh M. You are using $usage M.\" | /bin/mail -s \"disk usage on $host\" $user\@somehost.com,carlo\@somehost.com";
+#        system "echo \"Hi $user.  Please free space on your home directory on $host.  Our limit is $thresh M. You are using $usage M.\" | /bin/mail -s \"disk usage on $host\" $user\@somehost.com,lo\@somehost.com";
 #    }
 }

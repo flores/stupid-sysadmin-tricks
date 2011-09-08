@@ -4,7 +4,7 @@
 
 # Gets times to load different elemnts of the cps.  Can be used for any 
 # cp server as long as one first makes a cookie.site file for authentication 
-# -- carlo
+# -- lo
 
 if [ ${#1} -lt 2 ]; then
 	echo "$0 <squid ip> <site/target host>"
@@ -62,7 +62,7 @@ REPORT=$($WGET "http://$IP/someresource" && $TIME)
 echo "login:$LOGIN menu:$MENU ext:$EXT report:$REPORT stats:$STATS"
 #
 ## CSV friendly
-#echo -e "$DATE,$TIME,$LOGIN,$MENU,$EXT,$REPORT,$STATS" >> ~carlo/$SITE\_loadtimes
+#echo -e "$DATE,$TIME,$LOGIN,$MENU,$EXT,$REPORT,$STATS" >> ~lo/$SITE\_loadtimes
 
 
 
