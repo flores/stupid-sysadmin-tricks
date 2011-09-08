@@ -18,10 +18,10 @@ WGET="/usr/bin/time -f %e -o /tmp/time wget --load-cookies cookie.squid.$SITE --
 TIME="cat /tmp/time"
 DATE=$(date +%H:%M' '%m-%d-%y)
 
-if [[ "$SITE" =~ "(cp|web.|cp11).fonality.com" ]]; then
+if [[ "$SITE" =~ "somesite1.com" ]]; then
 	USER="user"
 	PASS="pass"
-elif [ $SITE = 'cp2.fonality.com' ]; then
+elif [ $SITE = 'somesite2.com' ]; then
 	USER="user"
 	PASS="pass"
 elif [[ "$SITE" =~ "somesite.com" ]]; then
