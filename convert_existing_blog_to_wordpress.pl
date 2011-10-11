@@ -59,7 +59,6 @@ while (my ($title, $published_at, $permalink, $body) = $sth->fetchrow_array ())
 		<dc:creator>admin</dc:creator>
 		<wp:comment_status>open</wp:comment_status>
 		<wp:ping_status>open</wp:ping_status>
-		<wp:post_name>retrollect-reviewed-by-techzulu</wp:post_name>
 		<wp:status>publish</wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
