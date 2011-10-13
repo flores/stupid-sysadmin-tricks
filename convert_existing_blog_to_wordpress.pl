@@ -67,7 +67,7 @@ print XML "<channel>
 	<generator>http://wordpress.org/?v=3.2.1</generator>\n";
 
 
-open (HTACCESS, ">> $htaccess");
+open (HTACCESS, ">> $htaccessfile");
 
 my $dbh = DBI->connect ("DBI:mysql:$db:$db_host", "$db_user", "$db_pass",
 	{ RaiseError => 1, PrintError => 0});
