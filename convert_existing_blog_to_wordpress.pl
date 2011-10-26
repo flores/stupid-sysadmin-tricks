@@ -16,7 +16,6 @@
 #
 ##########
 
-use strict;
 use DBI;
 
 
