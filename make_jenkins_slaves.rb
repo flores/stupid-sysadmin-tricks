@@ -1,14 +1,11 @@
 #!/usr/bin/env ruby
 
 # makes some Jenkins ssh slave node xmls
-# you MUST set password.  this is usually a common string under <hudson><slaves><slave><password>
 
 require 'rubygems'
 require 'optparse'
 
 options = {}
-
-options[:password] = "OMGSEKRETZ"
 
 optparse = OptionParser.new do|opts|
   opts.banner = "Puke some Jenkins ssh slave node xmls.  Usage: #{$0} -h <resolvable host>"
@@ -17,7 +14,6 @@ optparse = OptionParser.new do|opts|
   opts.on( '-h', '--host <host>', 'host for new jenkins slave. required!' ) do |host|
     options[:host] = host.to_s
   end
-  options[:name] = options[:host]
   opts.on( '-n', '--name <name>', 'name for new jenkins slave.  defaults to <host>' ) do |name|
     options[:name] = name.to_s
   end
@@ -37,6 +33,14 @@ optparse = OptionParser.new do|opts|
   opts.on( '-k', '--key <path>', 'private key for ssh.  /var/lib/jenkins/.ssh/id_rsa' ) do |port|
     options[:key] = key.to_s
   end
+  options[:password] = ""
+  opts.on( '-s', '--secret <string>', "jenkins password.  empty by default" ) do |secret|
+    options[:password] = secret.to_s
+  end
+  options[:dir] = "/var/lib/jenkins"
+  opts.on( '-d', '--dir <path>', 'remote working dir.  defaults to /var/lib/jenkins' ) do |port|
+    options[:dir] = key.to_s
+  end
   options[:executors] = 1
   opts.on( '-e', '--executors <int>', 'executors for new jenkins slave. 1 by default' ) do |executors|
     options[:executors] = executors.to_i
@@ -44,9 +48,6 @@ optparse = OptionParser.new do|opts|
   options[:label] = ""
   opts.on( '-l', '--label <string>', 'labels/tags for slave.  use " " to separate labels' ) do |label|
     options[:label] = label.to_s
-  end
-  opts.on( '-s', '--secret <string>', "jenkins password.  overrides options[:password] in the head of #{$0}" ) do |secret|
-    options[:password] = secret.to_s
   end
   opts.on( '--help', 'Display this screen' ) do
     puts opts
@@ -60,7 +61,7 @@ begin
     options[:name] = options[:host]
   end
   unless options[:host]
-    puts "Error: must set -r/--role"
+    puts "Error: must set -h/--host"
     puts optparse
     exit 2
   end
@@ -75,7 +76,7 @@ puts '
     <slave>
       <name>' + options[:name] + '</name>
       <description>' + options[:desc] + '</description>
-      <remoteFS>/var/lib/jenkins</remoteFS>
+      <remoteFS>' + options[:dir] + '</remoteFS>
       <numExecutors>' + options[:executors].to_s + '</numExecutors>
       <mode>EXCLUSIVE</mode>
       <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
