@@ -22,7 +22,7 @@ optparse = OptionParser.new do|opts|
     options[:desc] = desc.to_s
   end
   options[:user] = "root"
-  opts.on( '-u', '--user <string>', 'user for ssh.  root by default' ) do |port|
+  opts.on( '-u', '--user <string>', 'user for ssh.  root by default' ) do |user|
     options[:user] = user.to_s
   end
   options[:port] = 22
@@ -30,7 +30,7 @@ optparse = OptionParser.new do|opts|
     options[:port] = port.to_i
   end
   options[:key] = "/var/lib/jenkins/.ssh/id_rsa"
-  opts.on( '-k', '--key <path>', 'private key for ssh.  /var/lib/jenkins/.ssh/id_rsa' ) do |port|
+  opts.on( '-k', '--key <path>', 'private key for ssh.  /var/lib/jenkins/.ssh/id_rsa' ) do |key|
     options[:key] = key.to_s
   end
   options[:password] = ""
@@ -38,7 +38,7 @@ optparse = OptionParser.new do|opts|
     options[:password] = secret.to_s
   end
   options[:dir] = "/var/lib/jenkins"
-  opts.on( '-d', '--dir <path>', 'remote working dir.  defaults to /var/lib/jenkins' ) do |port|
+  opts.on( '-d', '--dir <path>', 'remote working dir.  defaults to /var/lib/jenkins' ) do |dir|
     options[:dir] = key.to_s
   end
   options[:executors] = 1
