@@ -39,7 +39,7 @@ optparse = OptionParser.new do|opts|
   end
   options[:dir] = "/var/lib/jenkins"
   opts.on( '-d', '--dir <path>', 'remote working dir.  defaults to /var/lib/jenkins' ) do |dir|
-    options[:dir] = key.to_s
+    options[:dir] = dir.to_s
   end
   options[:executors] = 1
   opts.on( '-e', '--executors <int>', 'executors for new jenkins slave. 1 by default' ) do |executors|
