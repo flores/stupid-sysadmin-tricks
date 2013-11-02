@@ -6,8 +6,8 @@ use strict;
 
 #my $server=@ARGV;
 #chomp $server;
-#my @users=`ssh $server "echo \"select user,host from mysql.user;\" | /usr/bin/mysql"`;
-my @users=`echo "select user,host from mysql.user" | /usr/bin/mysql`;
+#my @users=`ssh $server "echo \"select user,host from mysql.user;\" | /usr/bin/env mysql"`;
+my @users=`echo "select user,host from mysql.user" | /usr/bin/env mysql`;
 chomp @users;
 my ($line, $user, $ip);
 
@@ -17,6 +17,6 @@ foreach $line (@users)
 	$user="$1";
 	$ip="$2";
 	#print "user $user ip $ip \n";
-	system "echo \"show grants for \'$user\'@\'$ip\';\" | /usr/bin/mysql";
+	system "echo \"show grants for \'$user\'@\'$ip\';\" | /usr/bin/env mysql";
 }
 	
